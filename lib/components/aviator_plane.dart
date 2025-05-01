@@ -9,9 +9,12 @@ enum Direction { up, down }
 
 class AviatorPlane extends SpriteAnimationComponent
     with HasGameRef<AviatorGame> {
-  Direction currentDirection = Direction.down;
+  Direction currentDirection = Direction.up;
 
   double time = 0;
+  double currentPosition = 0;
+  double lastPosition = 0;
+  bool? stopAcceleration;
 
   Vector2 _velocity = Vector2(0, 0);
 
@@ -38,24 +41,49 @@ class AviatorPlane extends SpriteAnimationComponent
 
   @override
   void update(double dt) {
-    if (position.x >= gameRef.size.x * .98 - Config.planeSize.x / 2) {
+    if ((position.x >= gameRef.size.x * .97 - Config.planeSize.x / 2) ||
+        lastPosition != 0) {
+      cruiseFly(dt);
     } else {
-      if (position.x < gameRef.size.x * .28) {
-        _velocity.x += Config.takeOffAcceleration.x * dt;
-      } else {
-        time += dt;
-        angle = -0.28 * math.sin(time * 1.1);
-        _velocity += Config.takeOffAcceleration * dt;
-      }
-      position += _velocity * dt;
+      takeOff(dt);
     }
     super.update(dt);
   }
 
+//====================Take Off====================//
+  void takeOff(dt) {
+    if (position.x < gameRef.size.x * .28) {
+      _velocity.x += Config.takeOffAcceleration.x * dt;
+    } else {
+      time += dt;
+      angle = -0.28 * math.sin(time * 1.1);
+      _velocity += Config.takeOffAcceleration * dt;
+    }
+    position += _velocity * dt;
+  }
+
+//====================Cruise Fly====================//
+  void cruiseFly(dt) {
+    if (lastPosition == 0) {
+      lastPosition = position.y;
+    }
+    if (position.y > lastPosition - 50 && currentDirection == Direction.up) {
+      position -= Vector2(20, 24) * dt;
+    } else if (position.y < lastPosition &&
+        currentDirection == Direction.down) {
+      position += Vector2(20, 24) * dt;
+    } else {
+      currentDirection =
+          currentDirection == Direction.up ? Direction.down : Direction.up;
+    }
+  }
+
+//====================Fly Away====================//
   void flyAway() {
     //TODO: implement crash logic
   }
 
+//====================Cash Out====================//
   void cashOut() {
     //TODO: implement cashout logic
   }
