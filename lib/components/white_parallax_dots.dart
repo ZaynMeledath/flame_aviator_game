@@ -4,18 +4,17 @@ import 'package:aviator_game/aviator_game.dart';
 import 'package:aviator_game/src/configuration.dart';
 import 'package:flame/components.dart';
 import 'package:flame/parallax.dart';
-import 'package:get/get.dart';
 
 class WhiteParallaxDots extends ParallaxComponent<AviatorGame> {
   WhiteParallaxDots()
       : super(
           anchor: Anchor.bottomRight,
           size: Vector2(
-            Get.width - Config.parallaxDotsWidth * .5,
+            Config.gameWidth - Config.parallaxDotsWidth * .5,
             Config.parallaxDotsWidth,
           ),
           position: Vector2(
-            Get.width,
+            Config.gameWidth,
             Config.gameHeight,
           ),
         );

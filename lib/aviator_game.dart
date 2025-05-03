@@ -13,7 +13,6 @@ class AviatorGame extends FlameGame {
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-
     add(BlueParallaxDots());
     add(WhiteParallaxDots());
     add(AviatorPlane());

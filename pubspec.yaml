@@ -13,8 +13,9 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.6
-  flame: ^1.22.0
   clay_containers: ^0.3.4
+  flame: ^1.22.0
+  flame_lottie: ^0.4.2+3
   get: ^4.7.2
 
 dev_dependencies:
@@ -28,6 +29,7 @@ flutter:
   
   assets:
     - assets/images/
+    - assets/lotties/
   
   # fonts:
   #   - family: Schyler
