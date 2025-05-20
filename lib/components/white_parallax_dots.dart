@@ -10,12 +10,12 @@ class WhiteParallaxDots extends ParallaxComponent<AviatorGame> {
       : super(
           anchor: Anchor.bottomRight,
           size: Vector2(
-            Config.gameWidth - Config.parallaxDotsWidth * .5,
-            Config.parallaxDotsWidth,
+            FlyAwayConfig.gameWidth - FlyAwayConfig.parallaxDotsWidth * .5,
+            FlyAwayConfig.parallaxDotsWidth,
           ),
           position: Vector2(
-            Config.gameWidth,
-            Config.gameHeight,
+            FlyAwayConfig.gameWidth,
+            FlyAwayConfig.gameHeight,
           ),
         );
 
@@ -26,7 +26,7 @@ class WhiteParallaxDots extends ParallaxComponent<AviatorGame> {
       [
         ParallaxImageData('aviator_game_dots_white.png'),
       ],
-      baseVelocity: Vector2(Config.parallaxDotsVelocity, 0),
+      baseVelocity: Vector2(FlyAwayConfig.parallaxDotsVelocity, 0),
     );
   }
 }

@@ -10,8 +10,8 @@ class BlueParallaxDots extends ParallaxComponent<AviatorGame> {
   BlueParallaxDots()
       : super(
           size: Vector2(
-            Config.parallaxDotsWidth,
-            Config.gameHeight - Config.parallaxDotsWidth * .5,
+            FlyAwayConfig.parallaxDotsWidth,
+            FlyAwayConfig.gameHeight - FlyAwayConfig.parallaxDotsWidth * .5,
           ),
           position: Vector2.zero(),
           anchor: Anchor.topLeft,
@@ -24,8 +24,8 @@ class BlueParallaxDots extends ParallaxComponent<AviatorGame> {
       [
         ParallaxImageData('aviator_game_dots_blue.png'),
       ],
-      baseVelocity:
-          Vector2(0, -Config.parallaxDotsVelocity), // Moves from top to bottom
+      baseVelocity: Vector2(
+          0, -FlyAwayConfig.parallaxDotsVelocity), // Moves from top to bottom
       repeat: ImageRepeat.repeatY,
       fill: LayerFill.width,
     );

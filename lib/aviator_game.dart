@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:aviator_game/components/aviator_plane.dart';
+import 'package:aviator_game/components/background_lights.dart';
 import 'package:aviator_game/components/blue_parallax_dots.dart';
 import 'package:aviator_game/components/white_parallax_dots.dart';
 import 'package:flame/game.dart';
@@ -13,8 +14,9 @@ class AviatorGame extends FlameGame {
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-    add(BlueParallaxDots());
-    add(WhiteParallaxDots());
-    add(AviatorPlane());
+    // add(BlueParallaxDots());
+    // add(WhiteParallaxDots());
+    add(BackgroundLights());
+    // add(AviatorPlane());
   }
 }

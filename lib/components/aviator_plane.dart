@@ -24,11 +24,13 @@ class AviatorPlane extends SpriteAnimationComponent
     final plane1 = await Sprite.load('fly_1.png');
     final plane2 = await Sprite.load('fly_2.png');
 
-    size = Config.planeSize;
+    size = FlyAwayConfig.planeSize;
     anchor = Anchor.center;
     position = Vector2(
-      Config.parallaxDotsWidth + Config.planeSize.x / 2,
-      gameRef.size.y - Config.parallaxDotsWidth - Config.planeSize.y / 2,
+      FlyAwayConfig.parallaxDotsWidth + FlyAwayConfig.planeSize.x / 2,
+      gameRef.size.y -
+          FlyAwayConfig.parallaxDotsWidth -
+          FlyAwayConfig.planeSize.y / 2,
     );
 
     // Set the animation to loop for the flying effect
@@ -41,7 +43,7 @@ class AviatorPlane extends SpriteAnimationComponent
 
   @override
   void update(double dt) {
-    if ((position.x >= gameRef.size.x * .97 - Config.planeSize.x / 2) ||
+    if ((position.x >= gameRef.size.x * .97 - FlyAwayConfig.planeSize.x / 2) ||
         lastPosition != 0) {
       cruiseFly(dt);
     } else {
@@ -53,11 +55,11 @@ class AviatorPlane extends SpriteAnimationComponent
 //====================Take Off====================//
   void takeOff(dt) {
     if (position.x < gameRef.size.x * .28) {
-      _velocity.x += Config.takeOffAcceleration.x * dt;
+      _velocity.x += FlyAwayConfig.takeOffAcceleration.x * dt;
     } else {
       time += dt;
       angle = -0.28 * math.sin(time * 1.1);
-      _velocity += Config.takeOffAcceleration * dt;
+      _velocity += FlyAwayConfig.takeOffAcceleration * dt;
     }
     position += _velocity * dt;
   }
