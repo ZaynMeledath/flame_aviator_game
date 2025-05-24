@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:aviator_game/aviator_game.dart';
 import 'package:aviator_game/src/configuration.dart';
+import 'package:aviator_game/src/fly_away_assets.dart';
 import 'package:flame/components.dart';
 import 'package:flame/parallax.dart';
 
@@ -24,7 +25,7 @@ class WhiteParallaxDots extends ParallaxComponent<AviatorGame> {
     await super.onLoad();
     parallax = await game.loadParallax(
       [
-        ParallaxImageData('aviator_game_dots_white.png'),
+        ParallaxImageData(FlyAwayAssets.whiteDots),
       ],
       baseVelocity: Vector2(FlyAwayConfig.parallaxDotsVelocity, 0),
     );

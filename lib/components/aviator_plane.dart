@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:aviator_game/aviator_game.dart';
 import 'package:aviator_game/src/configuration.dart';
+import 'package:aviator_game/src/fly_away_assets.dart';
 import 'package:flame/components.dart';
 import 'dart:math' as math;
 
@@ -21,8 +22,8 @@ class AviatorPlane extends SpriteAnimationComponent
   @override
   FutureOr<void> onLoad() async {
     // Load the sprites
-    final plane1 = await Sprite.load('fly_1.png');
-    final plane2 = await Sprite.load('fly_2.png');
+    final plane1 = await Sprite.load(FlyAwayAssets.fly1);
+    final plane2 = await Sprite.load(FlyAwayAssets.fly2);
 
     size = FlyAwayConfig.planeSize;
     anchor = Anchor.center;

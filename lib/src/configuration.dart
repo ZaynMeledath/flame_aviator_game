@@ -18,8 +18,8 @@ class FlyAwayConfig {
       50.w(),
     );
     backgroundLightsSize = Vector2(
-      gameWidth * .8,
-      gameWidth * 8,
+      gameWidth * 1.5,
+      gameWidth * 1.5,
     );
     takeOffAcceleration = Vector2(
       150.w(),
