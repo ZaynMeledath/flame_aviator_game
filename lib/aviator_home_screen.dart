@@ -1,4 +1,4 @@
-import 'package:aviator_game/aviator_game.dart';
+import 'package:aviator_game/fly_away_game.dart';
 import 'package:aviator_game/src/configuration.dart';
 import 'package:aviator_game/utils/screen_size.dart';
 import 'package:flame/game.dart';
@@ -28,7 +28,7 @@ class _AviatorHomeScreenState extends State<AviatorHomeScreen> {
             children: [
               SizedBox(
                 height: FlyAwayConfig.gameHeight,
-                child: GameWidget(game: AviatorGame()),
+                child: GameWidget(game: FlyAwayGame()),
               ),
               Container(
                 width: 180.w(),

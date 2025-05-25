@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:aviator_game/aviator_game.dart';
+import 'package:aviator_game/fly_away_game.dart';
 import 'package:aviator_game/src/configuration.dart';
 import 'package:aviator_game/src/fly_away_assets.dart';
 import 'package:flame/components.dart';
@@ -9,7 +9,7 @@ import 'dart:math' as math;
 enum Direction { up, down }
 
 class AviatorPlane extends SpriteAnimationComponent
-    with HasGameRef<AviatorGame> {
+    with HasGameRef<FlyAwayGame> {
   Direction currentDirection = Direction.up;
 
   double time = 0;

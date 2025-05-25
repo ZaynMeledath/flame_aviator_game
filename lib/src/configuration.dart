@@ -5,7 +5,7 @@ class FlyAwayConfig {
   static double gameWidth = 400.0;
   static double gameHeight = 350.0;
   static Vector2 planeSize = Vector2(80, 50);
-  static Vector2 backgroundLightsSize = Vector2(300, 300);
+  static Vector2 skyBackground = Vector2(gameWidth, gameHeight);
   static Vector2 takeOffAcceleration = Vector2(150, -230);
   static double parallaxDotsWidth = 35.0;
   static double parallaxDotsVelocity = 45.0;
@@ -17,9 +17,9 @@ class FlyAwayConfig {
       80.w(),
       50.w(),
     );
-    backgroundLightsSize = Vector2(
-      gameWidth * 1.5,
-      gameWidth * 1.5,
+    skyBackground = Vector2(
+      gameWidth,
+      gameHeight,
     );
     takeOffAcceleration = Vector2(
       150.w(),
