@@ -16,6 +16,8 @@ class AviatorPlane extends SpriteAnimationComponent
   double currentPosition = 0;
   double lastPosition = 0;
   bool? stopAcceleration;
+  final planeCruiseFlyPosition =
+      FlyAwayConfig.gameWidth * .95 - FlyAwayConfig.planeSize.x / 2;
 
   Vector2 _velocity = Vector2(0, 0);
 
@@ -44,8 +46,7 @@ class AviatorPlane extends SpriteAnimationComponent
 
   @override
   void update(double dt) {
-    if ((position.x >= gameRef.size.x * .97 - FlyAwayConfig.planeSize.x / 2) ||
-        lastPosition != 0) {
+    if ((position.x >= planeCruiseFlyPosition) || lastPosition != 0) {
       cruiseFly(dt);
     } else {
       takeOff(dt);
@@ -57,9 +58,23 @@ class AviatorPlane extends SpriteAnimationComponent
   void takeOff(dt) {
     if (position.x < gameRef.size.x * .28) {
       _velocity.x += FlyAwayConfig.takeOffAcceleration.x * dt;
+    } else if (position.x > gameRef.size.x * .5) {
+      time += dt;
+      angle = -0.30 * math.sin(time * 1.1);
+
+      final distanceLeft = planeCruiseFlyPosition - gameRef.size.x * .5;
+      final velocityX = distanceLeft / FlyAwayConfig.takeOffAcceleration.x;
+      final velocityY = distanceLeft / FlyAwayConfig.takeOffAcceleration.y;
+
+      // _velocity.x -= FlyAwayConfig.takeOffAcceleration.x * dt;
+      // _velocity.y += FlyAwayConfig.takeOffAcceleration.y * dt;
+      // _velocity -= Vector2(velocityX, velocityY) * dt;
+      // _velocity.clamp(Vector2.all(0), Vector2.all(10000));
+      _velocity.x -= velocityX * dt;
+      _velocity.y += velocityY * dt;
     } else {
       time += dt;
-      angle = -0.28 * math.sin(time * 1.1);
+      angle = -0.30 * math.sin(time * 1.1);
       _velocity += FlyAwayConfig.takeOffAcceleration * dt;
     }
     position += _velocity * dt;

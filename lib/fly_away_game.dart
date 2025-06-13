@@ -31,12 +31,14 @@ class FlyAwayGame extends FlameGame {
     addAll([
       clip,
       AviatorPlane(),
+      WhiteParallaxDots(),
+      BlueParallaxDots(),
     ]);
   }
 
   @override
   void update(double dt) {
-    background.angle += .7 * dt;
+    background.angle += .4 * dt;
     super.update(dt);
   }
 }

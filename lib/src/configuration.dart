@@ -6,13 +6,13 @@ class FlyAwayConfig {
   static double gameHeight = 350.0;
   static Vector2 planeSize = Vector2(80, 50);
   static Vector2 skyBackground = Vector2(gameWidth, gameHeight);
-  static Vector2 takeOffAcceleration = Vector2(150, -230);
-  static double parallaxDotsWidth = 35.0;
+  static Vector2 takeOffAcceleration = Vector2(150, -150);
+  static double parallaxDotsWidth = 30.0;
   static double parallaxDotsVelocity = 45.0;
 
   static void init() {
     gameWidth = screenSize.width;
-    gameHeight = (screenSize.height * 0.5).h();
+    gameHeight = (screenSize.height * 0.4).h();
     planeSize = Vector2(
       80.w(),
       50.w(),
@@ -22,10 +22,10 @@ class FlyAwayConfig {
       gameHeight,
     );
     takeOffAcceleration = Vector2(
-      150.w(),
-      -230.h(),
+      160.w(),
+      -150.h(),
     );
-    parallaxDotsVelocity = 35.w();
+    parallaxDotsWidth = 30.w();
     parallaxDotsVelocity = 45.w();
   }
 }

@@ -10,8 +10,8 @@ class LightsBackground extends PositionComponent {
   final sweepAngle = math.pi / 20;
 
   final gradientColors = [
-    Colors.purple.withAlpha(200),
-    Colors.purple.withAlpha(80),
+    Colors.purple.withAlpha(20),
+    Colors.purple.withAlpha(70),
     Colors.purple.withAlpha(1),
   ];
   @override
@@ -36,9 +36,10 @@ class LightsBackground extends PositionComponent {
 
     final int totalSegments = (2 * math.pi / sweepAngle).abs().ceil();
     for (int i = 0; i < totalSegments; i++) {
-      final segmentStart = sweepAngle * i * 2;
-      final dx = center.dx + radius * math.cos(segmentStart + sweepAngle / 2);
-      final dy = center.dy + radius * math.sin(segmentStart + sweepAngle / 2);
+      final startAngle = sweepAngle * i * 2;
+      //Calculate the offsets for the gradient
+      final dx = center.dx + radius * math.cos(startAngle + sweepAngle / 2);
+      final dy = center.dy + radius * math.sin(startAngle + sweepAngle / 2);
       final shader = ui.Gradient.linear(
         center,
         Offset(dx, dy),
@@ -50,7 +51,7 @@ class LightsBackground extends PositionComponent {
         ..moveTo(center.dx, center.dy)
         ..arcTo(
           rect,
-          segmentStart,
+          startAngle,
           sweepAngle,
           false,
         )
